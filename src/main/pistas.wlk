@@ -1,19 +1,17 @@
 object mainRoom {
 
-	var property patovaDeTurno
-	var property personas = #{}
-
-	method nombre() {
-		return "mainRoom"
-	}
+	var patovaDeTurno
+	var personas = #{}
 
 	method bailar(persona) {
-		persona.disminuirEnergia(40)
-		persona.aumentarDiversion(30)
+		if (self.estaEnPista(persona)) {
+			persona.disminuirEnergia(40)
+			persona.aumentarDiversion(30)
+		}
 	}
 
 	method entrar(persona) {
-		if (patovaDeTurno.dejaPasar(persona)) {
+		if (patovaDeTurno.puedePasar(persona)) {
 			personas.add(persona)
 		}
 	}
@@ -21,29 +19,31 @@ object mainRoom {
 	method cuantosBailan() {
 		return personas.size()
 	}
-	
+
 	method estaEnPista(alguien) {
 		return personas.contains(alguien)
+	}
+
+	method contratarPatova(patova) {
+		patovaDeTurno = patova
 	}
 
 }
 
 object panoramaBar {
 
-	var property patovaDeTurno
-	var property dj
-	var property personas = #{}
-
-	method nombre() {
-		return "panoramaBar"
-	}
+	var patovaDeTurno
+	var dj
+	var personas = #{}
 
 	method bailar(persona) {
-		dj.hacerBailar(persona)
+		if (self.estaEnPista(persona)) {
+			dj.hacerBailar(persona)
+		}
 	}
 
 	method entrar(persona) {
-		if (patovaDeTurno.dejaPasar(persona)) {
+		if (patovaDeTurno.puedePasar(persona)) {
 			personas.add(persona)
 		}
 	}
@@ -51,26 +51,31 @@ object panoramaBar {
 	method cuantosBailan() {
 		return personas.size()
 	}
-	
+
 	method estaEnPista(alguien) {
 		return personas.contains(alguien)
+	}
+
+	method contratarPatova(patova) {
+		patovaDeTurno = patova
+	}
+
+	method contratarDj(unDj) {
+		dj = unDj
 	}
 
 }
 
 object darkRoom {
 
-	var property patovaDeTurno
-	var property personas = #{}
+	var patovaDeTurno
+	var personas = #{}
 
-	method nombre() {
-		return "darkRoom"
+	method bailar() {
 	}
 
-	method bailar() {}
-
 	method entrar(persona) {
-		if (patovaDeTurno.dejaPasar(persona)) {
+		if (patovaDeTurno.puedePasar(persona)) {
 			personas.add(persona)
 		}
 	}
@@ -78,9 +83,13 @@ object darkRoom {
 	method cuantosBailan() {
 		return personas.size()
 	}
-	
+
 	method estaEnPista(alguien) {
 		return personas.contains(alguien)
+	}
+
+	method contratarPatova(patova) {
+		patovaDeTurno = patova
 	}
 
 }

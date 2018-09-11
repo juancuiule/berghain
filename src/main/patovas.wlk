@@ -1,6 +1,6 @@
 object rochensen {
 
-	method dejaPasar(persona) {
+	method puedePasar(persona) {
 		return persona.esMayorDe(21)
 	}
 
@@ -8,15 +8,15 @@ object rochensen {
 
 object rodrigsen {
 
-	method dejaPasar(persona) {
-		return persona.tieneRemeraDeColor("negra")
+	method puedePasar(persona) {
+		return persona.tieneRemeraDeColor("negra") and persona.tienePantalonDeColor("negro")
 	}
 
 }
 
 object gushtavotruccensen {
 
-	method dejaPasar(persona) {
+	method puedePasar(persona) {
 		return false
 	}
 
