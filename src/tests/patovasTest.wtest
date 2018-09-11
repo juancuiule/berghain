@@ -14,7 +14,6 @@ describe "Patovas" {
 	}
 
 	test "rodrigsen no deja pasar a vonLukaz porque tiene remera blanca" {
-		panoramaBar.entrar(vonLukaz)
 		assert.notThat(rodrigsen.puedePasar(vonLukaz))
 	}
 
