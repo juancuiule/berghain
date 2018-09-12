@@ -2,6 +2,7 @@ import main.djs.*
 import main.patovas.*
 import main.personas.*
 import main.pistas.*
+import main.berghain.*
 
 object patovaBueno {
 
@@ -14,61 +15,59 @@ object patovaBueno {
 describe "Pistas" {
 
 	fixture {
-		mainRoom.contratarPatova(patovaBueno)
-		panoramaBar.contratarPatova(patovaBueno)
-		darkRoom.contratarPatova(patovaBueno)
+		berghain.contratarPatova(patovaBueno)
 	}
 
 	test  "cuando gonzen baila en mainRoom su energia disminuye 40" {
-		mainRoom.entrar(gonzen)
+		berghain.entrar(gonzen)
 		mainRoom.bailar(gonzen)
 		assert.equals(50, gonzen.energia())
 	}
 
 	test  "cuando gonzen baila en mainRoom su diversion aumenta 30" {
-		mainRoom.entrar(gonzen)
+		berghain.entrar(gonzen)
 		mainRoom.bailar(gonzen)
 		assert.equals(45, gonzen.diversion())
 	}
 
 	test  "cuando en panoramaBar está dixon bianker baila y su energia disminuye 60" {
 		panoramaBar.contratarDj(dixon)
-		panoramaBar.entrar(bianker)
+		berghain.entrar(bianker)
 		panoramaBar.bailar(bianker)
 		assert.equals(80, bianker.energia())
 	}
 
 	test  "cuando en panoramaBar está dixon bianker baila y su diversion aumenta 120" {
 		panoramaBar.contratarDj(dixon)
-		panoramaBar.entrar(bianker)
+		berghain.entrar(bianker)
 		panoramaBar.bailar(bianker)
 		assert.equals(200, bianker.diversion())
 	}
 
 	test  "cuando en panoramaBar está marcelDettmann vonLukaz baila y su energia queda en 0" {
 		panoramaBar.contratarDj(marcelDettmann)
-		panoramaBar.entrar(vonLukaz)
+		berghain.entrar(vonLukaz)
 		panoramaBar.bailar(vonLukaz)
 		assert.equals(0, vonLukaz.energia())
 	}
 
 	test  "cuando en panoramaBar está marcelDettmann vonLukaz baila y su diversion aumenta 1000" {
 		panoramaBar.contratarDj(marcelDettmann)
-		panoramaBar.entrar(vonLukaz)
+		berghain.entrar(vonLukaz)
 		panoramaBar.bailar(vonLukaz)
 		assert.equals(1070, vonLukaz.diversion())
 	}
 
 	test  "cuando en panoramaBar está tommyMunioz gonzen baila y su energia disminuye 80" {
 		panoramaBar.contratarDj(tommyMunioz)
-		panoramaBar.entrar(gonzen)
+		berghain.entrar(gonzen)
 		panoramaBar.bailar(gonzen)
 		assert.equals(10, gonzen.energia())
 	}
 
 	test  "cuando en panoramaBar está tommyMunioz gonzen baila y su diversion queda en 0" {
 		panoramaBar.contratarDj(tommyMunioz)
-		panoramaBar.entrar(gonzen)
+		berghain.entrar(gonzen)
 		panoramaBar.bailar(gonzen)
 		assert.equals(0, gonzen.diversion())
 	}

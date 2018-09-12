@@ -13,5 +13,9 @@ object berghain {
 			personas.add(persona)
 		}
 	}
+	
+	method contratarPatova(patova) {
+		patovaDeTurno = patova
+	}
 
 }
